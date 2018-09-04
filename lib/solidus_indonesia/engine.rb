@@ -4,6 +4,8 @@ module SolidusIndonesia
     isolate_namespace Spree
     engine_name 'solidus_indonesia'
 
+    config.autoload_paths += %W(#{config.root}/lib)
+
     # use rspec for tests
     config.generators do |g|
       g.test_framework :rspec
@@ -13,6 +15,7 @@ module SolidusIndonesia
       Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
+      Spree::Ability.register_ability(Spree::IndonesiaAbility)
     end
 
     config.to_prepare(&method(:activate).to_proc)

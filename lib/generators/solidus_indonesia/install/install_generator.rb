@@ -13,6 +13,19 @@ module SolidusIndonesia
         inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css', " *= require spree/backend/solidus_indonesia\n", before: /\*\//, verbose: true
       end
 
+      def add_gateway
+        inject_into_file 'config/initializers/spree.rb', %Q[
+          # Change Country and Currency to Indonesia
+          if Spree::Country.table_exists?
+            country = Spree::Country.find_by_name('Indonesia')
+            if country.present?
+              config.currency = 'IDR'
+              config.default_country_id = country.id
+            end
+          end
+                ], after: /Core:/, verbose: true
+      end
+
       def add_migrations
         run 'bundle exec rake railties:install:migrations FROM=solidus_indonesia'
       end
@@ -24,6 +37,13 @@ module SolidusIndonesia
         else
           puts 'Skipping rake db:migrate, don\'t forget to run it!'
         end
+      end
+
+      def include_seed_data
+        append_file "db/seeds.rb", <<-SEEDS
+        \n
+        SolidusIndonesia::Engine.load_seed if defined?(SolidusIndonesia::Engine)
+        SEEDS
       end
     end
   end

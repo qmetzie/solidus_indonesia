@@ -36,4 +36,4 @@ Simply add this require statement to your spec_helper:
 require 'solidus_indonesia/factories'
 ```
 
-Copyright (c) 2018 [name of extension creator], released under the New BSD License
+Copyright (c) 2018 [Rubocop](https://github.com/solidusio-contrib/solidus_indonesia/graphs/contributors), released under the New BSD License
