@@ -1,3 +1,9 @@
+Deface::Override.new(
+  virtual_path: 'spree/address/_form',
+  name: 'remove_country_field_address',
+  remove: "div.field:contains('country_id')"
+)
+
 # Remove for ordering sake (State should be top first)
 Deface::Override.new(
   virtual_path: 'spree/address/_form',
