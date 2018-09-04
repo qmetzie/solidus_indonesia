@@ -1,5 +1,5 @@
 module Spree
-  class CustomAbility
+  class IndonesiaAbility
     include CanCan::Ability
 
     def initialize user
