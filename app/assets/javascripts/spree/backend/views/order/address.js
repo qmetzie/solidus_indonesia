@@ -1,10 +1,16 @@
-Spree.Views.Order.AddressIndonesia = Backbone.View.extend({
+Spree.Views.Order.Address = Backbone.View.extend({
   initialize: function(options) {
     // read initial values from page
     this.onChange();
 
     this.render();
     this.listenTo(this.model, "change", this.render);
+
+    this.stateSelect =
+      new Spree.Views.StateSelect({
+        model: this.model,
+        el: this.$el
+      });
 
     this.citySelect =
       new Spree.Views.CitySelect({
