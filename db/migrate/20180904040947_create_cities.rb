@@ -1,4 +1,4 @@
-class CreateTests < ActiveRecord::Migration[5.2]
+class CreateCities < ActiveRecord::Migration[5.2]
   def change
     create_table :spree_cities do |t|
       t.string :state_id
