@@ -1,9 +1,7 @@
 SolidusIndonesia
 ================
 
-Limit the app only for Indonesia
-Add Province and City
-Customize address views
+Limit the app only for Indonesia, Add Province and City, and Customize address views
 
 Installation
 ------------
@@ -19,6 +17,11 @@ Bundle your dependencies and run the installation generator:
 ```shell
 bundle
 bundle exec rails g solidus_indonesia:install
+```
+After do the migration:
+
+```shell
+rails db:seed
 ```
 
 After Installation, please to remove default configuration currency on spree.rb
