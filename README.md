@@ -21,7 +21,7 @@ bundle exec rails g solidus_indonesia:install
 After do the migration:
 
 ```shell
-rails db:seed
+rails db:seed or rake solidus_indonesia:load_seeds
 ```
 
 After Installation, please to remove default configuration currency on spree.rb
