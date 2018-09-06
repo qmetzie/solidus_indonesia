@@ -13,7 +13,7 @@ module SolidusIndonesia
         inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css', " *= require spree/backend/solidus_indonesia\n", before: /\*\//, verbose: true
       end
 
-      def add_gateway
+      def add_config_and_parameter
         inject_into_file 'config/initializers/spree.rb', %Q[
           # Change Country and Currency to Indonesia
           if Spree::Country.table_exists?
@@ -23,8 +23,14 @@ module SolidusIndonesia
               config.default_country_id = country.id
             end
           end
-                ], after: /Core:/, verbose: true
-      end
+        ], after: /config.currency = "USD"/, verbose: true
+
+        append_file 'config/initializers/spree.rb', %Q[
+          Spree::PermittedAttributes.address_attributes << :city_id
+          Spree::PermittedAttributes.address_attributes << { city: [:id, :name] }
+          Spree::Ability.register_ability(Spree::IndonesiaAbility)
+        ]
+     end
 
       def add_migrations
         run 'bundle exec rake railties:install:migrations FROM=solidus_indonesia'
