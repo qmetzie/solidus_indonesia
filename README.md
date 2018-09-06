@@ -9,7 +9,7 @@ Installation
 Add solidus_indonesia to your Gemfile:
 
 ```ruby
-gem 'solidus_indonesia'
+gem 'solidus_indonesia', github: 'qmetzie/solidus_indonesia'
 ```
 
 Bundle your dependencies and run the installation generator:
