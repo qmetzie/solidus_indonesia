@@ -25,10 +25,11 @@ module SolidusIndonesia
           end
         ], after: /config.currency = "USD"/, verbose: true
 
+        gsub_file 'config/initializers/spree.rb', /config.currency = "USD"\n/, ""
+
         append_file 'config/initializers/spree.rb', %Q[
           Spree::PermittedAttributes.address_attributes << :city_id
           Spree::PermittedAttributes.address_attributes << { city: [:id, :name] }
-          Spree::Ability.register_ability(Spree::IndonesiaAbility)
         ]
      end
 

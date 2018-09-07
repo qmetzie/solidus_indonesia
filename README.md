@@ -24,8 +24,6 @@ After do the migration:
 rails db:seed or rake solidus_indonesia:load_seeds
 ```
 
-After Installation, please to remove default configuration currency on spree.rb
-
 Testing
 -------
 
