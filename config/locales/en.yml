@@ -7,5 +7,5 @@ en:
         name: Name
     models:
       spree/city:
-        one: one city
-        other: "%{count} cities"
+        one: City
+        other: "%{count} Cities"
